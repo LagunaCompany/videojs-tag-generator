@@ -1,0 +1,18 @@
+<legend>Your Video</legend>
+
+<p>We need to know where your video files are.</p>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">.mp4 URL</span>
+    <input type="url" class="form-control" placeholder="URL to a MP4 file" ng-pattern="/.mp4$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.sources.mp4">
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">.webm URL</span>
+    <input type="url" class="form-control" placeholder="URL to a WEBM file" ng-pattern="/.webm$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.sources.webm">
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">.ogv URL</span>
+    <input type="url" class="form-control" placeholder="URL to a OGV file" ng-pattern="/.ogv$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.sources.ogv">
+</div>

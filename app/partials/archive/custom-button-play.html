@@ -1,0 +1,16 @@
+<legend>Custom Play Button</legend>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Play button image URL</span>
+    <input type="url" class="form-control" placeholder="A valid URL to an image asset" ng-pattern="/.(jpg|gif|png|svg)$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.dataSetup.customButtons.play.src">
+</div>
+
+<div class="input-group" ng-show="videoTagCtrl.video.dataSetup.customButtons.play.src">
+    <span class="input-group-addon" id="basic-addon1">Button width (pixels)</span>
+    <input type="number" class="form-control" placeholder="640" aria-describedby="basic-addon1" min="1" ng-model="videoTagCtrl.video.dataSetup.customButtons.play.width" required>
+</div>
+
+<div class="input-group" ng-show="videoTagCtrl.video.dataSetup.customButtons.play.src">
+    <span class="input-group-addon" id="basic-addon1">Button height (pixels)</span>
+    <input type="number" class="form-control" placeholder="480" aria-describedby="basic-addon1" min="1" ng-model="videoTagCtrl.video.dataSetup.customButtons.play.height" required>
+</div>

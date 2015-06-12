@@ -1,0 +1,63 @@
+<h3>Feedback and Errors</h3>
+
+<p>If anything goes wrong, you'll see useful messages below.</p>
+<p>Errors will definitely need your attention. Warnings should be looked at; things will probably still work, but maybe not as you expect.</p>
+
+<!-- Put "danger" messages at the top -->
+<div class="panel panel-danger" id="callout-dropdown-positioning" ng-hide="videoTagCtrl.video.sources.mp4 || videoTagCtrl.video.sources.webm|| videoTagCtrl.video.sources.ogv">
+    <div class="panel-heading">
+        <h4 id="enter-at-least-one-video-url">Error: Enter at Least One Video URL<a class="anchorjs-link" href="#may-require-additional-positioning"><span class="anchorjs-icon"></span></a></h4>
+    </div>
+    <div class="panel-body">
+        <p>Without any video URLs, this page can't create a usable video tag for you!</p>
+        <button type="button" class="btn btn-primary" ng-class="menuClass('your-video', 'disabled')" ng-click="changeView('/your-video')">Fix this</button>
+    </div>
+</div>
+
+<!-- Put "warning" messages in the middle -->
+<div class="panel panel-warning" id="callout-dropdown-positioning" ng-show="videoTagCtrl.video.preload == 'auto' || videoTagCtrl.video.preload == 'metadata' || videoTagCtrl.video.autoplay">
+    <div class="panel-heading">        
+        <h4 id="preload-and-autoplay-will-not-work-on-iOS-devices">Warning: Preload and autoplay will not work on iOS devices<a class="anchorjs-link" href="#may-require-additional-positioning"><span class="anchorjs-icon"></span></a></h4>
+    </div>
+    <div class="panel-body">
+        <p>For technical information, please see <a href="https://developer.apple.com/library/safari/documentation/AudioVideo/Conceptual/Using_HTML5_Audio_Video/Device-SpecificConsiderations/Device-SpecificConsiderations.html#//apple_ref/doc/uid/TP40009523-CH5-SW4" title="iOS-Specific Considerations - User Control of Downloads Over Cellular Networks">Apple's official documentation</a>.</p>
+    </div>
+</div>
+
+<div class="panel panel-warning" id="callout-autoplaying-video" ng-show="videoTagCtrl.video.autoplay && videoTagCtrl.video.dataSetup.customButtons.play.src">
+    <div class="panel-heading">
+        <h4 id="autoplaying-video">Warning: Autoplaying Video, and the Custom Play Button<a class="anchorjs-link" href="#autoplaying-video"><span class="anchorjs-icon"></span></a></h4>
+    </div>
+    <div class="panel-body">
+        <p>The video has been set to autoplay, so the custom play button won't be used!</p>
+    </div>
+</div>
+
+<div class="panel panel-warning" id="callout-looping-video-replay" ng-show="videoTagCtrl.video.loop && videoTagCtrl.video.dataSetup.customButtons.replay.src">
+    <div class="panel-heading">
+        <h4 id="looping-video-replay">Warning: Looping Video, and the Custom Replay Button<a class="anchorjs-link" href="#looping-video"><span class="anchorjs-icon"></span></a></h4>
+    </div>
+    <div class="panel-body">
+        <p>The video has been set to loop, so the custom replay button won't be used!</p>
+    </div>
+</div>
+
+<div class="panel panel-warning" id="callout-looping-video-end-screen" ng-show="videoTagCtrl.video.loop && tinymceModel">
+    <div class="panel-heading">
+        <h4 id="looping-video-end-screen">Warning: Looping Video, and End Screen Content<a class="anchorjs-link" href="#looping-video"><span class="anchorjs-icon"></span></a></h4>
+    </div>
+    <div class="panel-body">
+        <p>The video has been set to loop, so the end screen content won't be used!</p>
+    </div>
+</div>
+
+<div class="panel panel-warning" id="callout-end-screen-content" ng-show="tinymceModel && videoTagCtrl.video.dataSetup.customButtons.replay.src && !videoTagCtrl.video.loop">
+    <div class="panel-heading">
+        <h4 id="end-screen-content">Warning: End Screen Content, and the Custom Replay Button <a class="anchorjs-link" href="#end-screen-content"><span class="anchorjs-icon"></span></a></h4>
+    </div>
+    <div class="panel-body">
+        <p>Because you have chosen to use a custom replay button and end screen content, the layout may be a little messy as the player tries to show both when the video ends.</p>
+    </div>
+</div>
+
+<!-- Put "info" messages last -->

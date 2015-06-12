@@ -1,0 +1,54 @@
+<legend>Core Video Tag Options</legend>
+
+<p>Next, choose some standard HTML5 Video options.</p>
+
+<div class="control-group">
+    <div class="controls">
+        <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" name="controls" value="true" ng-model="videoTagCtrl.video.controls"> Show video controls
+            </label>
+        </div>
+        <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" name="autoplay" value="true" ng-model="videoTagCtrl.video.autoplay"> Autoplay video
+            </label>
+        </div>
+        <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" name="loop" value="true" ng-model="videoTagCtrl.video.loop"> Loop video
+            </label>
+        </div>
+
+    </div>
+</div>
+
+<div class="control-group">
+    <label class="control-label" for="preload">Preload video data</label>
+    <div class="controls">
+        <label class="radio-inline">
+            <input type="radio" name="preload" value="auto" ng-model="videoTagCtrl.video.preload"> auto
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="preload" value="metadata" ng-model="videoTagCtrl.video.preload"> metadata
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="preload" value="none" ng-model="videoTagCtrl.video.preload"> none
+        </label>
+    </div>
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Video poster image URL</span>
+    <input type="url" class="form-control" placeholder="A valid URL to an image asset" ng-pattern="/.(jpg|gif|png|svg)$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.poster">
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Video width (pixels)</span>
+    <input type="number" class="form-control" placeholder="640" aria-describedby="basic-addon1" min="1" ng-model="videoTagCtrl.video.width">
+</div>
+
+<div class="input-group">
+    <span class="input-group-addon" id="basic-addon1">Video height (pixels)</span>
+    <input type="number" class="form-control" placeholder="480" aria-describedby="basic-addon1" min="1" ng-model="videoTagCtrl.video.height">
+</div>

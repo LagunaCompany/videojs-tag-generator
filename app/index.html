@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="videoTag">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Video.js Tag Generator</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="css/jumbotron.css" rel="stylesheet">
+
+    <!-- Styles for code blocks -->
+    <link href="css/docs.min.css" rel="stylesheet">
+
+    <!-- Styles just for this page -->
+    <link href="css/styles.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="js/html5shiv.min.js"></script>
+      <script src="js/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body ng-controller="VideoTagController as videoTagCtrl">
+
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <!-- <a class="navbar-brand" href="#">Video.js</a> -->
+            </div>
+            <div id="navbar" class="navbar-collapse collapse navbar-inverse">
+                <ul class="nav navbar-nav">
+                    <li role="presentation" class="active"><a href="#">Video.js Tag Generator</a></li>
+                    <li role="presentation"><a href="/template-docs/content/index.html" title="Template Instructions">Back to Template Instructions</a></li>
+                    <li role="presentation"><a href="http://ecmcv3.arcadiagroup.ltd.uk/ecmc/ECMC/ECMC.html" title="ECMC Production">ECMC Production</a></li>
+                    <li role="presentation"><a href="http://www.videojs.com" title="Video.js Documentation">Video.js Docs</a></li>
+                </ul>
+            </div>
+            <!--/.navbar-collapse -->
+        </div>
+    </nav>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+        <div class="container">
+            <h1>Video.js Tag Generator</h1>
+            <p>Use this app to generate a Video.js HTML tag for use on the Arcadia websites.</p>
+            <button type="button" class="btn btn-success btn-lg" ng-class="menuClass('your-video', 'disabled')" ng-click="changeView('/your-video')" ng-hide="videoTagCtrl.video.sources.mp4 || videoTagCtrl.video.sources.webm || videoTagCtrl.video.sources.ogv">Set Up Your Videos!</button>
+            <button type="button" class="btn btn-success btn-lg" ng-class="menuClass('your-code', 'disabled')" ng-show="videoTagCtrl.video.sources.mp4 || videoTagCtrl.video.sources.webm || videoTagCtrl.video.sources.ogv" data-toggle="modal" data-target="#finalCode" ng-click="updateVideoId()">Get Code!</button>
+
+          <button type="button" class="btn btn-success btn-lg" ng-class="menuClass('your-code', 'disabled')" ng-show="videoTagCtrl.video.sources.mp4 || videoTagCtrl.video.sources.webm || videoTagCtrl.video.sources.ogv" data-toggle="modal" data-target="#codePreview" ng-click="updateVideoId()">Preview!</button>
+
+            <div class="btn-group">
+                <button type="button" class="btn btn-primary btn-lg">Configure...</button>
+                <button type="button" class="btn btn-primary dropdown-toggle btn-lg" data-toggle="dropdown" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li ng-class="menuClass('your-video', 'active')"><a href="#/your-video" title="Video URLs">Video URLs</a></li>
+                    <li class="divider"></li>
+                    <li ng-class="menuClass('video-tag-options-and-player-skin', 'active')"><a href="#/video-tag-options-and-player-skin" title="Video Tag Options and Player Skin">Video Tag Options and Player Skin</a></li>
+                    <li class="divider"></li>
+                    <li ng-class="menuClass('fullscreen-videos', 'active')"><a href="#/fullscreen-videos" title="Fullscreen Videos">Fullscreen Videos</a></li>
+                    <li ng-class="menuClass('end-screen', 'active')"><a href="#/end-screen" title="End Screen">End Screen</a></li>
+                    <li class="divider"></li>
+                    <li ng-class="menuClass('videojs-components', 'active')"><a href="#/videojs-components" title="Video.js Components">Video.js Components</a></li>
+                    <li ng-class="menuClass('custom-play-replay-button', 'active')"><a href="#/custom-play-replay-button" title="Custom Play/Replay Buttons">Custom Play / Replay Buttons</a></li>
+                    <li class="divider"></li>
+                    <li ng-class="menuClass('omniture-tracking', 'active')" role="presentation"><a href="#/omniture-tracking" title="Omniture Tracking">Omniture Tracking</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Example row of columns -->
+        <div class="row">
+            <div class="col-md-8">  
+
+                <form id="videoJsOptions" class="form-horizontal view-container" novalidate>
+
+                    <div ng-view class="view-frame"></div>
+
+                    <hr>
+
+                    <div ng-include="'partials/feedback-user.html'"></div>
+
+                </form>
+            </div>
+        </div>
+
+        <hr>
+
+        <!--<p>Video object</p>
+        <pre><code>{{videoTagCtrl.video}}</code></pre>
+        <p>Skins object  {{videoTagCtrl.videoJsSkins}}<p>
+        <p>skinClass property {{videoTagCtrl.video.skinClass}}</p>-->
+        <footer class="footer">
+            <p>Video.js Tag Generator &copy; The Arcadia Group Ltd.</p>
+            <p>Video.js is a free and open source HTML5 video player. Copyright <a href="http://www.brightcove.com" target="_blank">Brightcove, Inc.</a> View <a target="_blank" href="https://github.com/videojs/video.js/blob/master/LICENSE">license</a>.</p>
+        </footer>
+    </div>
+    <!-- /container -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="finalCode" tabindex="-1" role="dialog" aria-labelledby="finalCodeLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="finalCodeLabel">And finally... Your Code!</h4>
+                </div>
+                <div class="modal-body">
+
+                    <p>For use on the Arcadia websites, the HTML should be copied from the box below, and pasted into an ECMC template where you want the video to appear:</p>
+
+                    <!-- Yikes! What a tangle of tags!
+                        Feel free to prettify this while developing,
+                        but flatten it so it'll display properly in the app. -->
+                    <div class="highlight"><pre><code class="language-html" data-lang="html"><span class="nt">&lt;video</span> <span class="na">id=</span><span class="s">"{{videoTagCtrl.video.id}}"</span> <span class="na">class=</span><span class="s">"video-js {{videoTagCtrl.video.skinClass}}"</span> <span class="na">data-setup=</span><span class="s">'{{videoTagCtrl.video.dataSetup}}'</span> <span class="na">data-vjs-skin-src=</span><span class="s">"{{videoTagCtrl.videoJsSkins[videoTagCtrl.video.skinClass]}}"</span><span ng-show="videoTagCtrl.video.controls == true" class="na"> controls</span><span ng-show="videoTagCtrl.video.autoplay == true" class="na"> autoplay</span><span ng-show="videoTagCtrl.video.loop == true" class="na"> loop</span><span class="na"> preload=</span><span class="s">'{{videoTagCtrl.video.preload}}'</span><span ng-show="videoTagCtrl.video.width"> <span class="na">width=</span><span class="s">'{{videoTagCtrl.video.width}}'</span></span><span ng-show="videoTagCtrl.video.height"> <span class="na">height=</span><span class="s">'{{videoTagCtrl.video.height}}'</span></span><span ng-show="videoTagCtrl.video.poster"> <span class="na">poster=</span><span class="s">'{{videoTagCtrl.video.poster}}'</span></span><span ng-show="videoTagCtrl.video.trackedVideoName"> <span class="na">data-tracked-video-name=</span><span class="s">'{{videoTagCtrl.video.trackedVideoName}}'</span></span><span class="nt">&gt;</span><span ng-repeat="(key, value) in videoTagCtrl.video.sources"><br/><span class="nt">&lt;source</span> <span class="na">src=</span><span class="s">"{{value}}"</span> <span class="na">type=</span><span class="s">"video/{{key}}"</span> /&gt;</span><span ng-show="videoTagCtrl.video.sources.mp4 && videoTagCtrl.video.poster"><br/><span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">"vjs-no-js"</span><span class="nt">&gt;</span><span class="nt">&lt;a</span> <span class="na">href=</span><span class="s">"{{videoTagCtrl.video.sources.mp4}}"</span> <span class="na">title=</span><span class="s">"Download video"</span><span class="nt">&gt;</span><span class="nt">&lt;span&gt;</span>Your browser cannot play this video, please click here to download it instead.<span class="nt">&lt;/span&gt;</span><span class="nt">&lt;img</span> <span class="na">src=</span><span class="s">"{{videoTagCtrl.video.poster}}"</span> <span class="na">alt=</span><span class="s">"Video poster"</span> <span class="nt">/&gt;</span><span class="nt">&lt;/a&gt;</span><span class="nt">&lt;/div&gt;</span></span><br/><span ng-show="videoTagCtrl.video.dataSetup.endScreenContent"><span class="nt">&lt;script</span> <span class="na">type=</span><span class="s">"text/template"</span> <span class="na">class=</span><span class="s">"vjs-end-screen-content-template"</span>&gt;<br/>{{tinymceModel}}<br/><span class="nt">&lt;/script&gt;</span><br/></span><span class="nt">&lt;/video&gt;</span></code></pre></div>
+
+                    <p>That's it! The necessary JavaScript and CSS will be loaded along with the video. If it looks as though this isn't happening, please create a Lighthouse ticket and assign to the Digital IT Production Team.</p>
+
+                    <p>If the video is intended for a third-party website, the code in the following box must also be included in the <code>head</code> tag of the page. The website's administrator can assist with this. Note that certain features, such as fullscreen videos, end screen content, custom buttons and Omniture tracking should not be configured if the video is to be used on a third-party website.</p>
+
+                    <pre><code class="language-html" data-lang="html"><span class="nt">&lt;link</span> <span class="na">href</span>=<span class="s">"{{videoTagCtrl.videoJsSkins[videoTagCtrl.video.skinClass]}}"</span> <span class="na">rel</span>=<span class="s">"stylesheet"</span><span class="nt">&gt;</span><br /><span class="nt">&lt;script</span> <span class="na">src</span>=<span class="s">"//vjs.zencdn.net/4.12/video.js"</span>&gt;<span class="nt">&lt;/script&gt;</span></code></pre>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="codePreview" aria-labelledby="finalCodeLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="finalCodeLabel">Preview your video here...</h4>
+                </div>
+
+                <div class="modal-body">
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="endScreenContent" role="dialog" aria-labelledby="endScreenContentLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="endScreenContentLabel">End Screen Content</h4>
+                </div>
+                <div class="modal-body">                    
+
+                    <div class="wrapper-tinymce" ng-show="videoTagCtrl.video.dataSetup.endScreenContent">
+                        <p>Now use the editor below to create your content! It will be added to the code generated by this app.</p>
+                        <form method="post">
+                            <textarea ui-tinymce="tinymceOptions" ng-model="tinymceModel"></textarea>
+                        </form>                            
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="js/ie10-viewport-bug-workaround.js"></script>
+
+    <!-- Angular.js -->
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.min.js"></script>
+    <script src="js/angular-animate.min.js"></script>
+
+    <!-- Video JS -->
+    <script src="//vjs.zencdn.net/4.12/video.js"></script>
+
+    <!-- TinyMCE for AngularJs - https://github.com/angular-ui/ui-tinymce -->
+    <script src="//tinymce.cachefly.net/4.1/tinymce.min.js"></script>
+    <script src="js/tinymce.js"></script>
+    <script src="js/app.js"></script>
+
+
+</body>
+
+</html>

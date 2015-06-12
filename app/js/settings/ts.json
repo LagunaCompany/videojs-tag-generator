@@ -1,0 +1,44 @@
+[
+	{
+		"autoplay": true,
+		"controls": true,
+		"dataSetup": {
+			"fullscreenSourceSwitch": {
+				"sources": {
+					"mp4": "http://www.topshop.com/cms_videos/2-MA-video-w6-hi.mp4",
+					"webm":"http://www.topshop.com/cms_videos/2-MA-video-w6-hi.webm"
+				}
+			},
+			"customButtons": {
+				"play": {
+					"src": "http://www.topshop.com/wcsstore/TopShop/",
+					"width": 82,
+					"height": 82
+				},
+				"replay": {
+					"src": "http://www.topshop.com/wcsstore/TopShop/",
+					"width": 82,
+					"height": 82
+				}
+			},
+			"children": {
+				"posterImage": true,
+				"textTrackDisplay": true,
+				"loadingSpinner": true,
+				"bigPlayButton": true,
+				"controlBar": true
+			}
+		},
+		"height": 278,
+		"id": null,
+		"poster": "http://media.topshop.com/wcsstore/ConsumerDirectStorefrontAssetStore/images/colors/color7/cms/pages/static/static-0000084154/images/Still-large-video-MAv3.jpg",
+		"preload": "auto",
+		"skinClass": "vjs-skin-ts-custom-2",
+		"sources": {
+			"mp4": "http://www.topshop.com/cms_videos/2-MA-video-w6-lo.mp4",
+			"webm":"http://www.topshop.com/cms_videos/2-MA-video-w6-lo.webm"
+		},
+		"trackedVideoName": "My tracked video name",
+		"width": 496
+	}
+]

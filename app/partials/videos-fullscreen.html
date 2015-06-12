@@ -1,0 +1,18 @@
+<legend>Full Screen Video</legend>
+
+<p>If you would like a high-resolution video to play back in full screen mode, enter URLs here.</p>
+
+<div class="input-group" ng-show="videoTagCtrl.video.sources.mp4">
+    <span class="input-group-addon" id="basic-addon1">.mp4 URL</span>
+    <input type="url" class="form-control" placeholder="URL to a MP4 file" ng-pattern="/.mp4$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.dataSetup.fullscreenSourceSwitch.sources.mp4">
+</div>
+
+<div class="input-group" ng-show="videoTagCtrl.video.sources.webm">
+    <span class="input-group-addon" id="basic-addon1">.webm URL</span>
+    <input type="url" class="form-control" placeholder="URL to a WEBM file" ng-pattern="/.webm$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.dataSetup.fullscreenSourceSwitch.sources.webm">
+</div>
+
+<div class="input-group" ng-show="videoTagCtrl.video.sources.ogv">
+    <span class="input-group-addon" id="basic-addon1">.ogv URL</span>
+    <input type="url" class="form-control" placeholder="URL to a OGV file" ng-pattern="/.ogv$/" aria-describedby="basic-addon1" ng-model="videoTagCtrl.video.dataSetup.fullscreenSourceSwitch.sources.ogv">
+</div>

@@ -1,0 +1,15 @@
+<legend>End Screen Content</legend>
+
+<p>Please tick this box if you would like some HTML content to be displayed when the video ends.</p>
+
+ <div class="control-group">
+    <div class="controls">
+        <div class="checkbox-inline">
+            <label>
+              <input type="checkbox" name="endScreenContent" value="true" ng-model="videoTagCtrl.video.dataSetup.endScreenContent"> Display end screen content
+            </label>
+        </div>
+    </div>
+</div>
+
+<button type="button" class="btn btn-primary" ng-show="videoTagCtrl.video.dataSetup.endScreenContent" data-toggle="modal" data-target="#endScreenContent">Launch HTML Editor</button>
